@@ -5,7 +5,9 @@
 
 # Command should be called as follows:
 # ./deploy-logger-only.sh some-org-id-value
-
+# 4d719216-50db-44e2-843e-57abe6c12f9d
+# run with maven 3.8.4 not 3.9.6
+# use special settings.xml from this directory
 if [ "$#" -ne 1 ]
 then
   echo "[ERROR] You need to provide your OrgId"
@@ -19,12 +21,12 @@ echo "Replacing OrgId token..."
 
 echo sed -i.bkp "s/ORG_ID_TOKEN/$1/g" json-logger/pom.xml
 sed -i.bkp "s/ORG_ID_TOKEN/$1/g" json-logger/pom.xml
-
 # Deploying to Exchange
 echo "Deploying to Exchange..."
 
-echo mvn -f json-logger/pom.xml clean deploy
-mvn -f json-logger/pom.xml clean deploy
+echo mvn -X  -f json-logger/pom.xml clean   deploy -Dconnected_app_token=8fac6c3c-7777-4c9c-b18e-b1520ca2a4b0 -X
+mvn -X  -f json-logger/pom.xml clean   deploy -Dconnected_app_token=8fac6c3c-7777-4c9c-b18e-b1520ca2a4b0 -X
+
 
 if [ $? != 0 ]
 then
