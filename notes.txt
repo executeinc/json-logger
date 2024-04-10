@@ -1,0 +1,2 @@
+removed from lolggerProcessor.json to try to stop the things from resetting the default value.
+/* "default": "#[import modules::JSONLoggerModule output application/json ---\n{\n    payload: JSONLoggerModule::stringifyNonJSON(payload) \n}]", */
