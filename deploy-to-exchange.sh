@@ -8,6 +8,7 @@
 # 4d719216-50db-44e2-843e-57abe6c12f9d
 # run with maven 3.8.4 not 3.9.6
 # use special settings.xml from this directory
+# and
 if [ "$#" -ne 1 ]
 then
   echo "[ERROR] You need to provide your OrgId"
@@ -25,7 +26,7 @@ sed -i.bkp "s/ORG_ID_TOKEN/$1/g" json-logger/pom.xml
 echo "Deploying to Exchange..."
 
 echo mvn -X  -f json-logger/pom.xml clean   deploy -Dconnected_app_token=8fac6c3c-7777-4c9c-b18e-b1520ca2a4b0 -X
-mvn -X  -f json-logger/pom.xml clean   deploy -Dconnected_app_token=8fac6c3c-7777-4c9c-b18e-b1520ca2a4b0 -X
+mvn   -f json-logger/pom.xml clean install   deploy -Dconnected_app_token=8fac6c3c-7777-4c9c-b18e-b1520ca2a4b0
 
 
 if [ $? != 0 ]
